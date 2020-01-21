@@ -16,21 +16,42 @@ import java.util.Scanner;
 public class MVC_1 {
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String res;
-        String cedula;
-        do{
-        System.out.println("Coloque el numero de cedula");
-        cedula=sc.next();
-        if(cedula.length()>10 ||cedula.length()<10){
-            System.err.println("la cedula ingresada esta mal porfavor coloque bien los valores");
-            }else{
-            int cedulap=Integer.parseInt(cedula);
-            persona cristian = new persona ("cristian","cordova",0, 0,cedulap, "la 41", 'm', true);
-            System.out.println(cristian);
+         String cedula;
+        int c;
+        int suma=0;
+        int acum;
+        int resta=0;
+        
+         Scanner sc=new Scanner (System.in);
+         
+        System.out.println("Ingrese la cedula");
+        cedula=sc.nextLine();
+         
+        for (int i = 0; i < cedula.length()-1; i++) {
+            c=Integer.parseInt(cedula.charAt(i)+"");
+            if(i%2==0){
+                c=c*2;
+                if (c>9) {
+                    c=c-9;
+                }
             }
-            System.out.println("Desea intentarlo de nuevo o salir? n=salir o s=Mostrar resultado");
-        res=sc.next();
-        }while(!res.equalsIgnoreCase("n"));    
+          suma=suma+c;  
+        }
+        
+        if(suma%10 != 0){
+            acum=((suma/10)+1)*10;
+            resta=acum-suma;
+        }
+        
+        int ultimo=Integer.parseInt(cedula.charAt(9)+"");
+        
+        if(ultimo==resta){
+            
+            System.err.println("cedula correcta");
+            
+        }else {
+               
+        System.out.println("cedula incorrecta");
+        }  
     }
 }
