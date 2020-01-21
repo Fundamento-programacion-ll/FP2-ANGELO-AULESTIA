@@ -26,14 +26,11 @@ public class MVC_1 {
             System.err.println("la cedula ingresada esta mal porfavor coloque bien los valores");
             }else{
             int cedulap=Integer.parseInt(cedula);
-            System.out.print("la cedula es: "+cedulap);
+            persona cristian = new persona ("cristian","cordova",0, 0,cedulap, "la 41", 'm', true);
+            System.out.println(cristian);
             }
             System.out.println("Desea intentarlo de nuevo o salir? n=salir o s=Mostrar resultado");
         res=sc.next();
-        }while(!res.equalsIgnoreCase("n"));
-        
-        persona cristian = new persona ("cristian","cordova",0, 0,0, "la 41", 'm', true);
-        
-        System.out.println(cristian);
+        }while(!res.equalsIgnoreCase("n"));    
     }
 }
