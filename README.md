@@ -43,3 +43,35 @@ __angelo__
 //agregar imagenes
 
 ![Spiderbug](https://a.wattpad.com/cover/126760875-352-k746545.jpg)
+
+
+# como pegar codigo
+
+```javaScript
+System.out.println("angelo");  
+```
+
+//poner emoji
+
+se puedo pero por ahora no tengo idea ver en la pagina web de emoji de github
+
+
+# Tablas
+| edad | nombre |
+|----|----|
+|19 |Angelo|
+|15|Jheremy|
+
+# lineas
+----
+***
+___
+
+# videos
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=pSgTlvXXPMs" target="_blank">
+<img src="http://img.youtube.com/vi/pSgTlvXXPMs/0.jpg">
+</img>
+</a>
+
+[![imagen videos](http://img.youtube.com/vi/pSgTlvXXPMs/0.jpg)](http://www.youtube.com/watch?feature=player_embedded&v=pSgTlvXXPMs)
