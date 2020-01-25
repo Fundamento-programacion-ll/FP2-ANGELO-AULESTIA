@@ -49,7 +49,6 @@ public class vector {
     
     public vector() {
     }
-
     @Override
     public String toString() {
         return "vector: "+Arrays.toString(vector);
@@ -65,7 +64,6 @@ public class vector {
                 System.err.println(vector[i]);
             }
         }
-        System.out.println("los numero son primo");
         return primo;
     }
     
