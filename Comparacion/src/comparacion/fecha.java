@@ -51,7 +51,20 @@ public class fecha {
     }
     
     public String comprobacion() {
-        
+        int nummenor=0;
+        String n[] = null;
+        for (int i = 1; i <= 5; i++) {
+           dia=nums.getFecha_inicio().length();
+           mes=nums.getFecha_inicio().length();
+           anio=nums.getFecha_inicio().length();
+           int completo=anio+mes+dia;
+           if(nummenor>completo){
+               nummenor=completo;
+               
+           }
+            System.out.println(n[i]);
+           
+        }
         return "";
     }
     
