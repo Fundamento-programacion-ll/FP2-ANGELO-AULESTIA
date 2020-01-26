@@ -23,7 +23,7 @@ public class Comparacion {
        empleado n4=new empleado("David", "Nicolas","1/03/2000", "30/12/1980",150.50);
        empleado n5=new empleado("Angelo", "Aulestia","14/60/1986", "30/16/2012",250.50);
        
-        System.out.println("El empleado mas antiguo es: "+n1);
+        System.out.println("El empleado mas antiguo es: "+n3);
         System.out.println("El empleado que gana mas es: "+sa.sc);
        
     }
