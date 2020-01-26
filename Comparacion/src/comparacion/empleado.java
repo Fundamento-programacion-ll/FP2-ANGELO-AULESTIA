@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * @author angelo aulestia
  */
 public class empleado {
+    Comparacion sc=new Comparacion();
     private String nombre;
     private String apellido;
     private String fecha_inicio;
@@ -73,6 +74,18 @@ public class empleado {
     @Override
     public String toString() {
         return "empleado{" + "nombre=" + nombre + ", apellido=" + apellido + ", fecha_inicio=" + fecha_inicio + ", fecha_nacimiento=" + fecha_nacimiento + ", salario=" + salario + '}';
+    }
+    
+    public double salario(){
+        double numMax=0;
+        double n[] = null;
+        for(int cont = 1;cont <= 5;cont++ ){
+        if(n[cont]<numMax){
+            numMax=n[cont];
+        }
+ 
+    }
+        return 0;
     }
     
     

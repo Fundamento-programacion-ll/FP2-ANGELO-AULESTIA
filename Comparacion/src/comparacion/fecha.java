@@ -50,6 +50,10 @@ public class fecha {
         super();
     }
     
+    public String comprobacion() {
+        
+        return "";
+    }
     
     
     
