@@ -7,6 +7,7 @@ package conexionbdd;
 
 import conexion.conector;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,18 +23,25 @@ public class ConexionBDD {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        PreparedStatement ps;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
         conector stringConexion=new conector();
         stringConexion.getConxion();
         
         //insert
         String insert="insert into "+"articulos(nombre,descripcion,precio) "+"calies(?,?,?) ";
+        String select="select *"+"from articulos"+" where Articulo=?";
         try {
-            ps=stringConexion.getConxion().prepareStatement(insert);
-            ps.setString(1, "X box");
-            ps.setString(2, "Consola juegos");
-            ps.setDouble(3, 500);
-            ps.executeUpdate();
+            ps=stringConexion.getConxion().prepareStatement(select);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                //es para mostrar los datos
+                //la 1 siempre tendra el id
+                System.out.println(rs.getString(2));
+                System.out.println(rs.getString(3));
+                System.out.println(rs.getString(4));
+                
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ConexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         }

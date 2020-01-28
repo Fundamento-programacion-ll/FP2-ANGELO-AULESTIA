@@ -36,5 +36,21 @@ public class controladorArticulo {
         }
         
     }
+    public void mostrarDatos(articulo mostrarArticulo){
+        String select="select *"+"from articulos"+" where ?";
+        try {
+            ps=conexion.getConxion().prepareStatement(select);
+            ps.setString(1,mostrarArticulo.getNombre() );
+            ps.setInt(1."");
+            JOptionPane.showMessageDialog(null, "Datos encontrados con Exito");
+            
+        } catch (SQLException ex) {
+            System.err.println("error: "+ex);
+            //Logger.getLogger(controladorArticulo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Datos no encontrados");
+        }
+        
+        
+    }
     
 }
