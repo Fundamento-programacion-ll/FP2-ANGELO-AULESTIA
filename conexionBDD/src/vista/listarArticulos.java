@@ -6,6 +6,9 @@
 package vista;
 
 import controlador.controladorArticulo;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.articulo;
 
 /**
@@ -13,8 +16,8 @@ import modelo.articulo;
  * @author angelo aulestia
  */
 public class listarArticulos extends javax.swing.JFrame {
-    controladorArticulo aticuloControlador=new controladorArticulo();
-    articulo mostrarArticulo=new articulo();
+    controladorArticulo articuloControlador = 
+           new controladorArticulo();
     /**
      * Creates new form listarArticulos
      */
@@ -31,9 +34,9 @@ public class listarArticulos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        eleccion = new javax.swing.JComboBox<>();
         datos = new javax.swing.JTextField();
         Mostrar = new javax.swing.JButton();
+        datosbuscar = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +47,8 @@ public class listarArticulos extends javax.swing.JFrame {
             }
         });
 
+        datosbuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,22 +56,22 @@ public class listarArticulos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(datos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
-                        .addComponent(Mostrar)))
+                        .addComponent(Mostrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(datosbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(datosbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(datos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(Mostrar)
@@ -78,10 +83,14 @@ public class listarArticulos extends javax.swing.JFrame {
 
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         // TODO add your handling code here:
-        eleccion.item.Add("Google");
-        if(eleccion)
-        mostrarArticulo.setNombre(datos.getText());
-        
+        String item = datosbuscar.getSelectedItem().toString();
+        System.out.println("item " + item);
+        String valorABuscar = datos.getText();
+       try {
+           articuloControlador.BuscarDatosPorIdNombre(item, valorABuscar); // item cb, valor a buscar
+       } catch (SQLException ex) {
+           Logger.getLogger(listarArticulos.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_MostrarActionPerformed
 
     /**
@@ -122,6 +131,6 @@ public class listarArticulos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Mostrar;
     private javax.swing.JTextField datos;
-    private javax.swing.JComboBox<String> eleccion;
+    private javax.swing.JComboBox<String> datosbuscar;
     // End of variables declaration//GEN-END:variables
 }
