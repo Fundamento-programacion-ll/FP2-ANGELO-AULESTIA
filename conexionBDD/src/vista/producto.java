@@ -6,6 +6,10 @@
 package vista;
 
 import controlador.controladorArticulo;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.articulo;
 
 /**
@@ -13,15 +17,36 @@ import modelo.articulo;
  * @author angelo aulestia
  */
 public class producto extends javax.swing.JFrame {
-    articulo nuevoArticulo=new articulo();
-    controladorArticulo aticuloControlador=new controladorArticulo();
+    articulo nuevoArticulo = 
+                new articulo();
+    controladorArticulo articuloControlador = 
+                new controladorArticulo();   
+    ArrayList<articulo> listaNombres=null;
+    
 
     /**
      * Creates new form producto
      */
     public producto() {
         initComponents();
+        actualizar.setEnabled(false);
         //hacer una instancia de nuestro frame
+       modi.addItem("asdasd");
+        modi.addItem("OPCION NUEVA");
+        try {
+            System.out.println("Imprimir Lista");
+            listaNombres = articuloControlador.obtenerDatos();
+            for (articulo art : listaNombres) {
+            modi.addItem(art.getNombre());
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    public void habilitarBoton(){
+        if(!nombre.getText().isEmpty() && !tprecio.getText().isEmpty() && !descripcion.getText().isEmpty()){
+            actualizar.setEnabled(true);
+        }
     }
 
     /**
@@ -61,7 +86,11 @@ public class producto extends javax.swing.JFrame {
             }
         });
 
-        modi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "ID" }));
+        modi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                modiItemStateChanged(evt);
+            }
+        });
 
         jLabel4.setText("Precio");
 
@@ -93,13 +122,6 @@ public class producto extends javax.swing.JFrame {
                 .addGap(267, 267, 267)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -120,9 +142,16 @@ public class producto extends javax.swing.JFrame {
                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(283, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(modi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(modi, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,20 +207,40 @@ public class producto extends javax.swing.JFrame {
         float precio=0;
         precio=Float.parseFloat(tprecio.getText());
         nuevoArticulo.setPrecio(precio);
-        aticuloControlador.ingresarArticlos(nuevoArticulo);
+        articuloControlador.ingresarArticlos(nuevoArticulo);
         
     }//GEN-LAST:event_btnagregarActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        // TODO add your handling code here:
-        /**nuevoArticulo.setNombre(nombre.getText());
         nuevoArticulo.setDescripcion(descripcion.getText());
         float precio=0;
         precio=Float.parseFloat(tprecio.getText());
         nuevoArticulo.setPrecio(precio);
-        aticuloControlador.ingresarArticlos(nuevoArticulo);**/
+        articuloControlador.ingresarArticlos(nuevoArticulo);
         
     }//GEN-LAST:event_actualizarActionPerformed
+
+    private void modiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modiItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 1) {
+            System.out.println(evt.getItem().toString());
+            try {
+                listaNombres = articuloControlador.obtenerDatos();
+                for (articulo art : listaNombres) {
+                    if (art.getNombre().equals(evt.getItem().toString())) {
+                        nombre.setText(art.getNombre());
+                        descripcion.setText(art.getDescripcion());
+                        tprecio.setText(String.valueOf(art.getPrecio()));
+                    }                    
+                }                
+                        
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(producto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_modiItemStateChanged
 
     /**
      * @param args the command line arguments

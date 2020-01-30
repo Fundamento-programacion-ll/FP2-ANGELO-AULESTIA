@@ -11,19 +11,21 @@ import java.sql.SQLException;
 
 /**
  *
- * @author angelo aulestia
+ * @author SISTEMAS CORP
  */
 public class conector {
     
-    Connection conexion=null;
-    String url="jdbc:mysql://localhost:3306/prueba?useSSL=false";
-    String usuario="root";
-    String password="1111";
+    Connection conexion = null;
+    String url = 
+"jdbc:mysql://localhost:3306/prueba?useSSL=false";
+    String usuario = "root";
+    String password = "'angelo'";
     
     
     public conector(){
+        
         try {
-            conexion=(Connection)DriverManager.getConnection(url,usuario,password);
+            conexion = (Connection) DriverManager.getConnection(url,usuario,password);
             if (conexion != null) {
                 System.out.println("Se conecto");
             } else {
@@ -35,11 +37,13 @@ public class conector {
         }
     }
     
-    public Connection getConxion(){
+    
+    public  Connection getConxion(){
         return conexion;
     }
     
-    public void Desconectar(){
-        conexion=null;
+    public  void Desconectars(){
+        conexion = null;
     }
+    
 }

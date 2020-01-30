@@ -6,9 +6,11 @@
 package controlador;
 
 import conexion.conector;
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -93,23 +95,28 @@ public class controladorArticulo {
         }
     }
         
-        public void actualizar(String tipoBusqueda, String valorABuscar) throws SQLException{
-             if (tipoBusqueda.equalsIgnoreCase("ID")) {
-           int IdArticulo = Integer.parseInt(valorABuscar);
-           String sqlSelectID = 
-           "select * from articulos where idArticulo = ?";            
-                ps = conexion
-                        .getConxion()
-                        .prepareStatement(sqlSelectID);
-                ps.setInt(1, IdArticulo);
-                rs  = ps.executeQuery();              
-                    while (rs.next()) {                    
-                    System.out.println("nombre: "+rs.getString(2));
-                    System.out.println("descripcion: "+rs.getString(3));
-                    System.out.println("precio: "+rs.getFloat(4));
-                }                   
+       public ArrayList obtenerDatos() throws SQLException{
+        ArrayList<articulo> listaNombres = new ArrayList<>();
+        String selectDatos = "select * from articulos";
+        ps = conexion.getConxion().prepareStatement(selectDatos);
+        rs = ps.executeQuery();
+        while (rs.next()) {  
+            articulo art=new articulo();
+            art.setNombre(rs.getString(2));
+            art.setDescripcion(rs.getString(3));
+            art.setPrecio(rs.getInt(4));
+            listaNombres.add(art);
         }
+        return listaNombres;
     }
+       public void actualizar() throws SQLException{
+           String queryUpdate="update articulos set nombre=?, descripcion=?, precio=? where idArticulo";
+           ps=conexion.getConxion().prepareStatement(queryUpdate);
+           rs =ps.executeQuery();
+           while(rs.next()){ 
+               
+           }
+       }
             
  
 }
