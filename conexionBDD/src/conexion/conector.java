@@ -19,7 +19,7 @@ public class conector {
     String url = 
 "jdbc:mysql://localhost:3306/prueba?useSSL=false";
     String usuario = "root";
-    String password = "'angelo'";
+    String password = "angelo";
     
     
     public conector(){
