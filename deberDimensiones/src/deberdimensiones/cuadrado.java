@@ -22,5 +22,11 @@ public class cuadrado extends dimensiones{
         System.out.println("El volumen del Cuadrado es: "+resultado);
         return resultado;
     }
+    public float perimetroCuadrado(){
+         int lado=getLados();
+         float resultado=lado+lado+lado+lado;
+         System.out.println("El perimetro del Cuadrado es: "+resultado);
+         return resultado;
+     }
     
 }

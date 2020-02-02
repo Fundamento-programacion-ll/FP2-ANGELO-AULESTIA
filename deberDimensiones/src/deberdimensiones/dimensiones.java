@@ -10,9 +10,9 @@ package deberdimensiones;
  * @author angelo aulestia
  */
 public class dimensiones {
-    private int lados;
-    private int base;
-    private int altura;
+    private int lados=5;
+    private int base=10;
+    private int altura=15;
 
     public dimensiones(int lados, int base, int altura) {
         this.lados = lados;
