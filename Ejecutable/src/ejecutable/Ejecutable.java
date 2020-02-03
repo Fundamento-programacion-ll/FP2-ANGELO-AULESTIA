@@ -16,6 +16,12 @@ public class Ejecutable {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        solicitudSaldo a=new solicitudSaldo(356, 1719608604);
+        System.out.println(a);
+        retiros b=new retiros(55.69, 1719608604);
+        System.out.println(b);
+         deposito c=new  deposito(15.25, 1719608604);
+         System.out.println(c);
     }
     
 }
