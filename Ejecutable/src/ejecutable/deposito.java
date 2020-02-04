@@ -11,6 +11,9 @@ package ejecutable;
  */
 public class deposito extends transaccion{
     private double montoDeposito;
+
+    public deposito() {
+    }
     
 
     public deposito(double montoDeposito, int numCuenta) {
