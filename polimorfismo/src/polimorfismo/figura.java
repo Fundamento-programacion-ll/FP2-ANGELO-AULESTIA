@@ -5,14 +5,14 @@
  */
 package polimorfismo;
 
+import java.awt.Canvas;
 import java.awt.Graphics;
-import javax.swing.JPanel;
 
 /**
  *
  * @author angelo aulestia
  */
-public abstract class figura extends JPanel{
-    public abstract void dibujo(Graphics g);
-    
+public abstract class figura extends Canvas{
+    public abstract void paint(Graphics g);
+    public abstract double area();
 }

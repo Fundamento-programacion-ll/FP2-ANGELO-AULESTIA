@@ -7,47 +7,53 @@ package polimorfismo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author angelo aulestia
  */
-public class cilindro extends circulo{
-    private int altura;
+public class cilindro extends circulo {
 
-    public cilindro(int altura, int radio, int x, int y) {
-        super(radio, x, y);
-        this.altura = altura;
+    private double altura;
+
+    public double getAltura() {
+        return altura;
     }
 
-    public cilindro(int altura, int radio) {
-        super(radio);
-        this.altura = altura;
-    }
-
-    public cilindro(int altura) {
+    public void setAltura(double altura) {
         this.altura = altura;
     }
 
     public cilindro() {
+        super();
+        this.altura = Double.parseDouble(JOptionPane.showInputDialog("ingrese la altura del cilindro"));
     }
 
-    public int getAltura() {
-        return altura;
+    public double getArea() {
+
+        return 2 * super.getArea() + this.getCircunferencia() * this.altura;
+
+   }
+
+   public double getVolumen() {
+       return super.getArea() * this.altura;
+
     }
 
-    public void setAltura(int altura) {
-        this.altura = altura;
-    }
-    
-     public void dibujo(Graphics g){
+    public void paint(Graphics g) {
+       super.paint(g);
+       
+       g.setColor(Color.MAGENTA);
+
+       g.fillOval(getX(), (int) (getY() + this.altura), (int) super.getRadio(), (int) super.getRadio());
+
         g.setColor(Color.MAGENTA);
-        g.drawOval(getX(), getY(), getRadio(), getRadio());
-        g.drawRect(getX(), getY(),getRadio(), getRadio());
-        g.drawRect(getX(), getY(),getRadio(), getRadio());
-        g.drawOval(-getX(), -getY(), -getRadio(), -getRadio());
+        g.drawLine((int) (super.getX() + super.getRadio()), (int) (super.getY() + (super.getRadio() / 2)), (int) (super.getX() + super.getRadio()), (int) (super.getY() + this.altura + super.getRadio() - (super.getRadio() / 2)));
+        g.drawLine((int) (getX()), (int) (super.getY() + (super.getRadio() / 2)), (int) (super.getX()), (int) (super.getY() + this.altura + super.getRadio() - (super.getRadio() / 2)));
+
     }
 
-    
-    
+
+
 }

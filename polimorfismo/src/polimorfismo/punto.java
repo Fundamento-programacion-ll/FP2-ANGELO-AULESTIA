@@ -7,21 +7,32 @@ package polimorfismo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author angelo aulestia
  */
-public class punto extends figura{
-    int x;
-    int y;
+public class punto extends figura {
 
-    public punto(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+    private int x;
+    private int y;
 
     public punto() {
+        super();
+        String datos;
+        datos = JOptionPane.showInputDialog("ingrese las coordenadas x,y separados con coma");
+        StringTokenizer tokens = new StringTokenizer(datos, ",");
+
+        this.x = Integer.parseInt(tokens.nextToken());
+        this.y = Integer.parseInt(tokens.nextToken());
+    }
+
+    public punto(int x, int y) {
+        super();
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {
@@ -41,17 +52,19 @@ public class punto extends figura{
     }
 
     @Override
-    public void dibujo(Graphics g) {
-        //rellenar un ovalo
-        g.setColor(Color.MAGENTA);
-        g.fillOval(this.x,this.y, 20, 20);
-    }
+    public void paint(Graphics g) {
+        // TODO Auto-generated method stub
+        g.setColor(Color.RED);
+        g.fillOval(this.x, this.y, 30, 30);
 
+    }
+    
     @Override
     public String toString() {
-        return "los punto que usted ingreson son:\n"+"X= "+this.x+"\n"+"Y= "+this.y;
+        return "\nPunto [x= " + this.x + ", y= " + this.y + ']';
     }
-    
-    
-    
+    @Override
+    public double area() {
+        return 0;
+    }
 }

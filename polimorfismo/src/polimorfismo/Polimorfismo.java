@@ -5,6 +5,7 @@
  */
 package polimorfismo;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,25 +19,50 @@ public class Polimorfismo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        circulo a=new circulo();
-        punto b=new punto();
-        int X;
-        int Y;
-        int Radio;
-        String op;
-        op=JOptionPane.showInputDialog("Menu\n"+"1.-Punto\n"+"2.-Circulo");
-        if(op.equalsIgnoreCase("punto")){
-            X=Integer.parseInt(JOptionPane.showInputDialog("ingrese X"));
-            b.setX(X);
-            Y=Integer.parseInt(JOptionPane.showInputDialog("ingrese Y"));
-            b.setY(Y);
-        }else if(op.equalsIgnoreCase("circulo")){
-            Radio=Integer.parseInt(JOptionPane.showInputDialog("ingrese el radio"));
-            a.setRadio(Radio);
+        menu();
+
+//        punto pto = new punto();
+//        circulo circle = new circulo();
+//        cilindro cili = new cilindro();
+    }
+
+    public static void menu() {
+        JFrame ventana = new JFrame();
+        String input = JOptionPane.showInputDialog(null, "Ingreser la opcion a dibujar:\n"+"1.-punto\n"+"2.-circulo\n"+"3.-cilindro\n"+"4.-cuadrado\n"+"5.-Rectangulo\n"+"4.-salir");
+        if (input.equalsIgnoreCase("punto")) {
+            punto pto = new punto();
+            ventana.add(pto);
+            ventana.setSize(700, 400);
+            ventana.setVisible(true);
+            ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        } else if (input.equalsIgnoreCase("circulo")) {
             
-        }else{
-            JOptionPane.showConfirmDialog(null, "Escoja las opciones que se le de");
+            circulo circle = new circulo();
+            ventana.add(circle);
+            ventana.setSize(700, 400);
+            ventana.setVisible(true);
+            ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            System.out.println("el area del ciruclo es= "+356);
+         }else if(input.equalsIgnoreCase("cuadrado")){
+            cuadrado cua=new cuadrado();
+            ventana.add(cua);
+            ventana.setSize(700, 400);
+            ventana.setVisible(true);
+            ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+            }else if(input.equalsIgnoreCase("rectangulo")){
+            rectangulo rec=new rectangulo();
+            ventana.add(rec);
+            ventana.setSize(700, 400);
+            ventana.setVisible(true);
+            ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          }else if(input.equalsIgnoreCase("cilindro")){
+            cilindro ci=new cilindro();
+            ventana.add(ci);
+            ventana.setSize(700, 400);
+            ventana.setVisible(true);
+            ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          } else {
+            JOptionPane.showMessageDialog(null, "Opcion no encontrada");
         }
     }
-    
 }
