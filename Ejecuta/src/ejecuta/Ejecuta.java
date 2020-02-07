@@ -27,6 +27,9 @@ public class Ejecuta {
         administrativo a=new administrativo();
         docente b=new docente();
         limpieza c=new limpieza();
+        double sueldoa;
+        double sueldob;
+        double sueldoc;
         String op;
         do{
         nombre=JOptionPane.showInputDialog(null, "coloque su nombre");
@@ -36,7 +39,6 @@ public class Ejecuta {
         cedula=Integer.parseInt(JOptionPane.showInputDialog(null, "coloque su cedula"));
         area=JOptionPane.showInputDialog(null, "Coloque su area de trabajo: \n"+"1.-Administrativo\n"+"2.-Docente\n"+"3.-Limpieza");
         if(area.equalsIgnoreCase("Administrativo")){
-            double sueldoa;
             a.setNombre(nombre);
             a.setApellido(apellido);
             a.setEdad(edad);
@@ -45,7 +47,6 @@ public class Ejecuta {
             a.setArea(area);
             sueldoa=Double.parseDouble(JOptionPane.showInputDialog("ingrese su sueldo en total:"));
         }else if(area.equalsIgnoreCase("Docente")){
-            double sueldob;
             String cargo;
             b.setNombre(nombre);
             b.setApellido(apellido);
@@ -58,7 +59,6 @@ public class Ejecuta {
             b.setCargo(cargo);
             
         }else if(area.equalsIgnoreCase("Limpieza")){
-            double sueldoc;
             String turno;
             c.setNombre(nombre);
             c.setApellido(apellido);
