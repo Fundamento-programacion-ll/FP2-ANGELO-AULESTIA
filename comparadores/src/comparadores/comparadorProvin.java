@@ -11,16 +11,19 @@ import java.util.Comparator;
  *
  * @author angelo aulestia
  */
-public class comparador implements Comparator{
-
+public class comparadorProvin implements Comparator{
     int compararNombre;
     provincias provincia1, provincia2;
+
     @Override
     public int compare(Object pro1, Object pro2) {
         provincia1 = (provincias)pro1;
         provincia2 = (provincias)pro2;
-        compararNombre = (provincia1.getNombreProvincia()
-                .compareToIgnoreCase(provincia2.getNombreProvincia()));
+        if(provincia1.getNumeroHabitantes()>provincia2.getNumeroHabitantes()){
+            compararNombre=1;
+        }else{
+            compararNombre=-1;
+        }
         return compararNombre;
     }
     

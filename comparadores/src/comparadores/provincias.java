@@ -13,31 +13,31 @@ import javax.swing.JOptionPane;
  * @author angelo aulestia
  */
 public class provincias {
-    private String nombreProvincias;
+    private String nombreProvincia;
     private int numeroHabitantes;
 
     public provincias() {
-        super();
-        String datosNombre;
-        int datosHabitantes;
-        datosNombre = JOptionPane.showInputDialog("ingrese el nombre de las provincia separados por ';'");
-        datosHabitantes=Integer.parseInt(JOptionPane.showInputDialog("ingrese el numero de habitantes de esa privincia"));
-        StringTokenizer tokens = new StringTokenizer(datosNombre, ";");
-        this.nombreProvincias=tokens.nextToken();
-        this.numeroHabitantes=datosHabitantes;
-        
-        
+        String datos;
+        datos = JOptionPane.showInputDialog(null, "Ingrese los datos separados por punto y coma");
+        StringTokenizer  tokens = new StringTokenizer(datos,";");
+        this.nombreProvincia = tokens.nextToken();
+        this.numeroHabitantes = Integer.parseInt(tokens.nextToken());        
     }
-    public provincias(String nombreProvincias, int numeroHabitantes) {
-        this.nombreProvincias = nombreProvincias;
+        
+    public provincias(String nombreProvincia, int numeroHabitantes) {
+        this.nombreProvincia = nombreProvincia;
         this.numeroHabitantes = numeroHabitantes;
     }
-    public String getNombreProvincias() {
-        return nombreProvincias;
+    
+    
+        
+
+    public String getNombreProvincia() {
+        return nombreProvincia;
     }
 
-    public void setNombreProvincias(String nombreProvincias) {
-        this.nombreProvincias = nombreProvincias;
+    public void setNombreProvincia(String nombreProvincia) {
+        this.nombreProvincia = nombreProvincia;
     }
 
     public int getNumeroHabitantes() {
@@ -47,6 +47,13 @@ public class provincias {
     public void setNumeroHabitantes(int numeroHabitantes) {
         this.numeroHabitantes = numeroHabitantes;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: "+ getNombreProvincia()+" habitantes: "+getNumeroHabitantes();
+    }
+    
+    
     
     
     

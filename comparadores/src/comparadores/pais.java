@@ -6,6 +6,7 @@
 package comparadores;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,36 +14,53 @@ import javax.swing.JOptionPane;
  * @author angelo aulestia
  */
 public class pais {
-    private ArrayList<provincias> listaProbvincias;
     
+    private ArrayList<provincias> listaProvincias;
 
     public pais() {
-        this.listaProbvincias=new ArrayList<>();
-    }
-    
-    public pais(ArrayList<provincias> listaProbvincias) {
-        this.listaProbvincias = listaProbvincias;
-    }
-    
-    public ArrayList<provincias> getListaProbvincias() {
-        return listaProbvincias;
+        this.listaProvincias = new ArrayList<>();
     }
 
-    public void setListaProbvincias() {
+    public pais(ArrayList<provincias> listaProvincias) {
+        this.listaProvincias = listaProvincias;
+    }
+
+    
+    
+    public ArrayList<provincias> getListaProvincias() {
+        return listaProvincias;
+    }
+
+    public void setListaProvincias() {
         int opcion ;
         provincias provincia;
         do {            
             provincia = new provincias();
             agregarProvincia(provincia);
             opcion = JOptionPane.showConfirmDialog(null, "Mas Provincias", "Continuar",JOptionPane.YES_NO_CANCEL_OPTION);
-        } while (opcion==JOptionPane.YES_NO_CANCEL_OPTION);
+        } while (opcion==JOptionPane.YES_NO_CANCEL_OPTION);        
     }
     
-   public void agregarProvincia(provincias provincia) {
-       this.listaProbvincias.add(provincia);
-   }
-   
-   
+    
+    
+    public void agregarProvincia(provincias provincia){
+        this.listaProvincias.add(provincia);
+    }
+    
+    
+    public void ordenarPorNombreProvincia(){
+        // ordenar la lista de objetos por el nombre
+        Collections.sort(listaProvincias, new comparador());
+    }
+
+    @Override
+    public String toString() {
+        return "Lista provincias \n"+listaProvincias;
+    }
+    
+    
+    
+    
     
     
 }
