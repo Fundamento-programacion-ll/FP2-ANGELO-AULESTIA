@@ -50,7 +50,7 @@ console.log(arreglo)
 
 
 var usuarioABuscar=(arreglo,usuarioABuscar)=>{
-    var usuarioEncontrado=arreglo.find(usuario=>{
+    var usuarioEncontrado=arreglo.filter(usuario=>{
       return usuario.nombre===usuarioABuscar;
     });
     if (usuarioEncontrado===undefined) {
