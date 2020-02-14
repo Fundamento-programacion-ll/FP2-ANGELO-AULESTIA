@@ -1,3 +1,4 @@
+/*
 var arreglo=[{
     nombre: 'Angelo',
     apellido: 'Aulestia',
@@ -11,6 +12,7 @@ var arreglo=[{
     apellido: 'Ramirez',
     edad: 16
 }];
+*/
 /*
 var buscarUnUsuario=(arreglo,usuarioABuscar)=>{
      var usuarioEncontrado=arreglo.find(usuario=>{
@@ -20,6 +22,7 @@ var buscarUnUsuario=(arreglo,usuarioABuscar)=>{
 };
 buscarUnUsuario(arreglo,'Angelo');
 */
+/*
 console.log('array completo')
 console.log(arreglo)
 arreglo.push({
@@ -62,3 +65,24 @@ var usuarioABuscar=(arreglo,usuarioABuscar)=>{
 usuarioABuscar(arreglo,'Angelo');
 console.log(arreglo)
 
+*/
+const moment=require('moment');
+moment.locale('es')
+var fecha=new Date();
+console.log(fecha);
+console.log(fecha.getDate());
+console.log(fecha.getDay());
+console.log(fecha.getMonth());
+console.log(fecha.getFullYear());
+console.log(fecha.getDay(),'/',fecha.getMonth()+1,'/',fecha.getFullYear());
+console.log(moment().format('dddd'));
+console.log(moment().format('MM-DD-YYYY'));
+const horaActual=moment().format('hh:mm:ss');
+console.log(horaActual);
+console.log(moment().subtract(3,'hours').toString());
+
+console.log(fecha.toISOString());
+console.log(fecha.toDateString());
+console.log(fecha.toUTCString());
+
+console.log(moment().toObject()['years']);
